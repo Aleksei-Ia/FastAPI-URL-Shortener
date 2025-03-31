@@ -2,7 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
-DATABASE_URL = os.getenv("postgres://postgres:CcACCbbCD442114dbC1eGfc2C653gcc1@switchback.proxy.rlwy.net:19354/railway")
+DATABASE_URL = os.getenv("DATABASE_URL")
+if DATABASE_URL is None:
+    raise Exception("DATABASE_URL не задан!")
 
 engine = create_engine(DATABASE_URL, echo=False)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
