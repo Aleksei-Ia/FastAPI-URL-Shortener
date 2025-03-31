@@ -14,8 +14,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "postgres://postgres:CcACCbbCD442114dbC1eGfc2C653gcc1@switchback.proxy.rlwy.net:19354/railway"
+      DATABASE_URL: "${DATABASE_URL}"
       REDIS_HOST: "redis"
       REDIS_PORT: "6379"
+      SECRET_KEY: "${SECRET_KEY}"
     command: >
       uvicorn app.main:app --host 0.0.0.0 --port 8000
