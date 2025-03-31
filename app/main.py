@@ -1,4 +1,3 @@
-redisimport uvicorn
 from fastapi import FastAPI, Depends, HTTPException, status, Request, Response, Form
 from fastapi.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
@@ -7,6 +6,8 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
 import redis
 import uuid
+import uvicorn
+import redis
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
