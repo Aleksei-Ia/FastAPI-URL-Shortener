@@ -8,6 +8,7 @@ import redis
 import uuid
 import uvicorn
 import redis
+import os
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
