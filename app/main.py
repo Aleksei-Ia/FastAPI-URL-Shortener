@@ -1,4 +1,4 @@
-import uvicorn
+redisimport uvicorn
 from fastapi import FastAPI, Depends, HTTPException, status, Request, Response, Form
 from fastapi.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
@@ -25,7 +25,10 @@ app = FastAPI(title="URL Shortener (with APScheduler, timezone-aware)")
 
 Base.metadata.create_all(bind=engine)
 
-redis_client = redis.Redis(host="redis", port=6379, db=0)
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT", "6379"))
+
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT)
 
 UNREGISTERED_LINK_MAX_AGE_DAYS = 2
 
